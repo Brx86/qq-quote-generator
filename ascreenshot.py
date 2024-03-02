@@ -10,7 +10,7 @@ async def init() -> Browser:
     global _playwright
     global _browser
     _playwright = await async_playwright().start()
-    _browser = await _playwright.firefox.launch(headless=False)
+    _browser = await _playwright.firefox.launch()
     return _browser
 
 
