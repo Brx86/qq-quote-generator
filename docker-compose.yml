@@ -1,12 +1,8 @@
 version: '3'
 services:
-    quote:
-        image: 'qq-quote-generator:1.7'
+    qq-quote:
         container_name: qq-quote
+        image: 'brx86/qq-quote-generator:latest'
         ports:
-            - '5002:5000'
+            - '5000:5000'
         restart: unless-stopped
-networks:
-  default:
-    external: true
-    name: app_default
