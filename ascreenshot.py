@@ -37,7 +37,9 @@ async def screenshot(
     """网页截图
 
     Args:
-        url (str): 网址
+        url (str, optional): 网址
+        html (str, optional): 填充内容
+        locate (str, optional): 定位器
         type (Literal["jpeg", "png"], optional): 图片格式. 默认为 "png".
 
     Returns:
