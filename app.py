@@ -27,10 +27,10 @@ def read_root() -> JSONResponse:
     return JSONResponse({"Github": "https://github.com/Brx86/qq-quote-generator"})
 
 
-@app.post(path="/{r_type}")
+@app.post(path="/{img_type}")
 async def handler(
     data_list: list[dict],
-    r_type: Literal["jpeg", "png", "base64"],
+    img_type: Literal["jpeg", "png", "base64"],
 ) -> Response:
     """处理post请求，返回图片数据
 
@@ -42,6 +42,6 @@ async def handler(
         Response: 图片的base64或文件bytes
     """
     html = await template.render_async(data_list=data_list)
-    if r_type == "base64":
+    if img_type == "base64":
         return Response(encodebytes(await screenshot(html=html, locate="#app")))
-    return Response(await screenshot(html=html, locate="#app", type=r_type))
+    return Response(await screenshot(html=html, locate="#app", img_type=img_type))

@@ -32,7 +32,7 @@ async def screenshot(
     url: str = "",
     html: str = "",
     locate: str = "",
-    type: Literal["jpeg", "png"] = "png",
+    img_type: Literal["jpeg", "png"] = "png",
 ) -> bytes:
     """网页截图
 
@@ -51,8 +51,8 @@ async def screenshot(
         if html:
             await page.set_content(html)
         if locate:
-            return await page.locator(locate).screenshot(type=type)
-        return await page.screenshot(full_page=True, type=type)
+            return await page.locator(locate).screenshot(type=img_type)
+        return await page.screenshot(full_page=True, type=img_type)
 
 
 async def main(url):
