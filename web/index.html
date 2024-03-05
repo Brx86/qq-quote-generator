@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QQ造典</title>
+    <link rel="stylesheet" href="pico.min.css" />
+</head>
+
+<body>
+    <main class="container-fluid">
+        <article>
+            <h2>QQ造典</h2>
+            <form>
+                QQ号: <input type="text" name="user_id" required><br>
+                昵称: <input type="text" name="user_nickname" required><br>
+                文本: <input type="text" name="message" required><br>
+                <fieldset class="grid">
+                    <div>格式:
+                        <input type="radio" id="jpeg" name="img_type" value="jpeg" checked>jpeg
+                        <input type="radio" id="png" name="img_type" value="png">png
+                    </div>
+                    <button>生成</button>
+                </fieldset>
+            </form>
+            <img id="image"></img>
+            <script>
+                if (window.location.search.length > 0) {
+                    let url_params = new URLSearchParams(window.location.search),
+                        button = document.querySelector('button'),
+                        image = document.getElementById("image"),
+                        params = Object.fromEntries(url_params.entries()),
+                        img_type = params.img_type || 'jpeg',
+                        api_url = `https://api.aya1.eu.org:22001/${img_type}`,
+                        headers = { 'Content-Type': 'application/json' }
+                    url_params.forEach((value, key) => {
+                        let input = document.querySelector(`input[type="text"][name="${key}"], input[type="radio"][id="${value}"]`)
+                        if (input) { input.type === 'text' ? input.value = value : input.checked = true }
+                    });
+                    button.setAttribute('aria-busy', 'true')
+                    fetch(api_url, { method: 'POST', headers: headers, body: JSON.stringify([params]) })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            return response.blob();
+                        })
+                        .then(blob => image.src = URL.createObjectURL(blob))
+                        .finally(() => { button.setAttribute('aria-busy', 'false') })
+                }
+            </script>
+        </article>
+    </main>
+</body>
+
+</html>
