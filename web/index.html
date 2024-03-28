@@ -39,7 +39,7 @@
                         image = document.getElementById("image"),
                         params = Object.fromEntries(url_params.entries()),
                         img_type = params.img_type || 'jpeg',
-                        api_url = `https://api.aya1.eu.org:22001/${img_type}`,
+                        api_url = `https://api.aya1.de:22001/${img_type}`,
                         headers = { 'Content-Type': 'application/json' }
                     url_params.forEach((value, key) => {
                         let input = document.querySelector(`input[type="text"][name="${key}"], input[type="radio"][id="${value}"]`)
