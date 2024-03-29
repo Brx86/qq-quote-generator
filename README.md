@@ -6,9 +6,9 @@
 
 ## 使用方法
 ### 网页版示例（功能不全）
-https://qq.aya1.eu.org/
+https://qq.aya1.de/
 
-https://qq.aya1.eu.org/?user_id=1659870350&user_nickname=Cafe+aya%7E&message=%E5%89%8D%E7%AB%AF%E5%86%99%E4%B8%8D%E6%9D%A5&img_type=jpeg
+https://qq.aya1.de/?user_id=1659870350&user_nickname=Cafe+aya%7E&message=%E5%89%8D%E7%AB%AF%E5%86%99%E4%B8%8D%E6%9D%A5&img_type=jpeg
 
 ### 运行：
 1. 使用docker：
